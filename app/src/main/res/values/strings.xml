@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">task7</string>
+    <string name="app_name">Task 7</string>
+    <string name="retrofit_error">ERROR IN FETCHING API RESPONSE. Try again</string>
+    <string name="input_hint">Поле для ввода...</string>
 </resources>
