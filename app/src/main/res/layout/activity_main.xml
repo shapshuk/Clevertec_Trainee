@@ -16,15 +16,6 @@
         tools:itemCount="30"
         tools:listitem="@layout/item_view" />
 
-<!--    <Button-->
-<!--        android:id="@+id/button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Отправить"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/clevertec_logo"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
     <ImageView
         android:id="@+id/clevertec_logo"
         android:layout_width="match_parent"
@@ -32,7 +23,8 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/clevertec_logo" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

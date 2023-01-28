@@ -3,8 +3,10 @@ package com.example.task7.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.task7.R
@@ -25,8 +27,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         appComponent.inject(this)
-
         viewModel.getViewFromApi()
+
+        // hides keyboard every time the Activity starts
+        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+
+        viewModel.postResult.observe(this) {
+            showResultDialog(it)
+        }
     }
 
     override fun onResume() {
@@ -37,16 +45,17 @@ class MainActivity : AppCompatActivity() {
         viewModel.fetchingError.observe(this) {
             handleFetchingError(it)
         }
-
+        viewModel.progressBarVisibility.observe(this) {
+            binding.progressBar.visibility = it
+        }
     }
 
-    override fun onStop() {
-        Log.e("onStop", "Activity called onStop")
-        super.onStop()
-    }
-
-    private fun restoreView() {
-
+    private fun showResultDialog(result: String) {
+        viewModel.progressBarVisibility.value = ProgressBar.INVISIBLE
+        AlertDialog.Builder(this)
+            .setMessage(result)
+            .setPositiveButton("OK", null)
+            .show()
     }
 
     private fun setUpView(formDefinition: FormDefinition) {
@@ -55,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         title = formDefinition.title
         Glide.with(this).load(formDefinition.image).into(binding.clevertecLogo)
         recyclerView.adapter = RecyclerViewAdapter(formDefinition, viewModel)
-        binding.progressBar.visibility = ProgressBar.INVISIBLE
+        viewModel.progressBarVisibility.value = ProgressBar.INVISIBLE
     }
 
     private fun handleFetchingError(t: Throwable) {

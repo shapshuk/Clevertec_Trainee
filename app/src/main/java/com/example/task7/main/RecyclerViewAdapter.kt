@@ -77,7 +77,6 @@ class RecyclerViewAdapter(private val formDefinition: FormDefinition, private va
             is FormViewHolder -> {
                 holder.binding.fieldTitle.text = formDefinition.fields[position].title
                 val field = formDefinition.fields[position]
-
                 when(field.type) {
                     ViewTypes.TEXT.name -> {
                         val textView = holder.itemView.findViewById<TextView>(R.id.edit_text)
@@ -117,13 +116,8 @@ class RecyclerViewAdapter(private val formDefinition: FormDefinition, private va
                 }
             }
             is ButtonViewHolder -> {
-                viewModel.postData()
                 holder.binding.button.setOnClickListener {
-                    Toast.makeText(
-                        holder.itemView.context,
-                        viewModel.formData.toString(),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    viewModel.postData()
                 }
             }
         }

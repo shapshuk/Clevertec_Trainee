@@ -1,7 +1,5 @@
 package com.example.task7.retrofit
 
-import java.util.Dictionary
-
 data class FormDefinition (
     var title: String,
     var image: String,
@@ -13,6 +11,14 @@ data class Field (
     var name: String,
     var type: String,
     var values: Map<String, String>,
+)
+
+data class FormData (
+    var form: Map<String, String>
+)
+
+data class PostResponse (
+    var result: String
 )
 
 enum class ViewTypes {

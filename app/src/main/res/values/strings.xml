@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Task 7</string>
     <string name="retrofit_error">ERROR IN FETCHING API RESPONSE. Try again</string>
-    <string name="input_hint">Поле для ввода...</string>
+    <string name="input_hint">Поле для ввода…</string>
+    <string name="button_send_data">Отправить</string>
+    <string name="clevertec_logo">Logo of the company</string>
 </resources>
