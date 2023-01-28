@@ -1,12 +1,8 @@
 package com.example.task7.main
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.print.PrintAttributes.Margins
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: MainViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -42,24 +37,24 @@ class MainActivity : AppCompatActivity() {
         viewModel.fetchingError.observe(this) {
             handleFetchingError(it)
         }
+
+    }
+
+    override fun onStop() {
+        Log.e("onStop", "Activity called onStop")
+        super.onStop()
+    }
+
+    private fun restoreView() {
+
     }
 
     private fun setUpView(formDefinition: FormDefinition) {
-
         val recyclerView = binding.recyclerview
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-        var fields = formDefinition.fields
-        formDefinition.fields += fields + fields + fields + fields + fields
-
         title = formDefinition.title
         Glide.with(this).load(formDefinition.image).into(binding.clevertecLogo)
-
-
-
-        recyclerView.adapter = RecyclerViewAdapter(formDefinition)
-//        recyclerView.addView(View.inflate(this, R.layout.dropdown_input, null))
-
+        recyclerView.adapter = RecyclerViewAdapter(formDefinition, viewModel)
         binding.progressBar.visibility = ProgressBar.INVISIBLE
     }
 

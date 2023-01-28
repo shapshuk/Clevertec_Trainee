@@ -7,6 +7,7 @@ import com.example.task7.retrofit.RetrofitService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.util.Dictionary
 
 class MainViewModel(private val retrofitService: RetrofitService): ViewModel() {
 
@@ -15,6 +16,8 @@ class MainViewModel(private val retrofitService: RetrofitService): ViewModel() {
 
     private val _fetchingError = MutableLiveData<Throwable>()
     val fetchingError = _fetchingError
+
+    val formData: MutableMap<String, String> = mutableMapOf()
 
     private lateinit var viewFromApiDisposable: Disposable
 
@@ -33,6 +36,10 @@ class MainViewModel(private val retrofitService: RetrofitService): ViewModel() {
     override fun onCleared() {
         viewFromApiDisposable.dispose()
         super.onCleared()
+    }
+
+    fun postData() {
+
     }
 
 }
