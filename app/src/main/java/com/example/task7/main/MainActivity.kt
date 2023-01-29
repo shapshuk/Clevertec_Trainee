@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleFetchingError(t: Throwable) {
+        viewModel.progressBarVisibility.value = ProgressBar.INVISIBLE
         Log.e("Retrofit", t.toString())
         Toast.makeText(
             this,

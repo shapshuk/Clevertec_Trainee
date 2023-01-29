@@ -13,6 +13,6 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="Field title" />
+            android:text="@string/field_title" />
 
 </LinearLayout>

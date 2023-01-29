@@ -4,4 +4,5 @@
     <string name="input_hint">Поле для ввода…</string>
     <string name="button_send_data">Отправить</string>
     <string name="clevertec_logo">Logo of the company</string>
+    <string name="field_title">Field title</string>
 </resources>

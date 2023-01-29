@@ -20,7 +20,11 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "API_URL", "\"http://test.clevertec.ru/tt/\""
+//            buildConfigField "String", "API_URL", "\"http://test.clevertec.ru/tt/\""
+            buildConfigField "String", "API_URL", "\"https://42cc9b41-cf14-480a-8e08-18496827d5b4.mock.pstmn.io/\""
+
+
+
         }
         release {
             minifyEnabled false
@@ -43,7 +47,7 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
