@@ -20,11 +20,7 @@ android {
 
     buildTypes {
         debug {
-//            buildConfigField "String", "API_URL", "\"http://test.clevertec.ru/tt/\""
-            buildConfigField "String", "API_URL", "\"https://42cc9b41-cf14-480a-8e08-18496827d5b4.mock.pstmn.io/\""
-
-
-
+            buildConfigField "String", "API_URL", "\"http://test.clevertec.ru/tt/\""
         }
         release {
             minifyEnabled false
